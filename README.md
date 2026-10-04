@@ -150,18 +150,27 @@ Lệnh này sẽ tự động cài đặt gói hỗ trợ tương tác lên thi�
 1. **Khởi chạy QtScrcpy:**
    - Mở phần mềm QtScrcpy và kết nối với điện thoại của bạn.
    - Cửa sổ truyền hình ảnh sẽ xuất hiện với tiêu đề dạng `Phone-<serial>` (ví dụ: `Phone-R3CT104B80P`).
+    <img width="682" height="464" alt="image" src="https://github.com/user-attachments/assets/4624c07c-5ea8-4ade-9dd5-01714632a28c" />
 
+    
 2. **Khởi chạy ứng dụng lớp phủ:**
    ```bash
    python qtscrcpy_overlay.py
    ```
    Lớp phủ sẽ tự động tìm thấy cửa sổ QtScrcpy và hiển thị thanh điều khiển màu đen viền xanh bám dính ở đáy màn hình.
+    <img width="990" height="600" alt="image" src="https://github.com/user-attachments/assets/2cdc4773-6371-4928-9839-046afc1b243a" />
 
 3. **Kích hoạt chế độ soi XML:**
    - Bấm nút **[Soi XML]** trên thanh công cụ hoặc ấn phím **F5**.
    - Màn hình sẽ chuyển sang chế độ phân tích, hiển thị đầy đủ các phần tử giao diện dưới dạng khung viền Cyan và ô nhập liệu màu Tím.
+  
+     
+    <img width="275" height="605" alt="image" src="https://github.com/user-attachments/assets/230b7dc0-181d-4a51-bd4d-064a02df999b" />
 
 Hình 4: Trạng thái hiển thị các khung giao diện sau khi phân tích cây XML thành công
+
+
+<img width="271" height="602" alt="image" src="https://github.com/user-attachments/assets/d8809db6-36e5-44ce-adc7-151fd77cbef8" />
 
 4. **Tương tác trên màn hình bảo mật:**
    - Click chuột trái vào các khung để tương tác bình thường.
