@@ -28,6 +28,10 @@ Khi điều khiển điện thoại Android từ xa qua giao thức truyền mà
 
 ScrcpySecureOverlay giải quyết bài toán này mà không yêu cầu can thiệp sâu vào firmware hệ điều hành (không cần root thiết bị). Ứng dụng đọc trực tiếp cấu trúc cây giao diện (UI Hierarchy) thông qua dịch vụ trợ năng và giao thức ADB, sau đó dựng lại lớp phủ đồ họa chuẩn xác đến từng pixel đè ngay trên cửa sổ QtScrcpy. Người dùng có thể quan sát vị trí các nút, bấm trực tiếp bằng chuột, gõ phím số trên bàn phím máy tính hoặc chia lưới mô phỏng bàn phím ảo bảo mật.
 
+
+
+<img width="984" height="605" alt="image" src="https://github.com/user-attachments/assets/4c3005eb-404b-4c10-8c03-a886dbabcf67" />
+
 Hình 1: Giao diện tổng quan lớp phủ đè lên cửa sổ QtScrcpy khi soi XML màn hình bảo mật
 
 ---
