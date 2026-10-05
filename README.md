@@ -275,6 +275,7 @@ Tệp XML được trích xuất ở định dạng đầy đủ (không nén), 
 ---
 
 ## 9. Cơ chế cô lập lệnh ADB (Target Device Isolation)
+<img width="872" height="620" alt="image" src="https://github.com/user-attachments/assets/5ea8711d-cab0-484e-b520-e06a15c6101c" />
 
 Khi người dùng làm việc trong môi trường đa thiết bị (cắm nhiều điện thoại Android hoặc mở đồng thời nhiều giả lập), việc gửi lệnh ADB thông thường rất dễ gặp lỗi nghiêm trọng:
 ```text
@@ -343,6 +344,7 @@ python qtscrcpy_overlay.py --demo
 ---
 
 ## 11. Xử lý sự cố thường gặp (Troubleshooting)
+
 
 ### Sự cố 1: Lớp phủ báo "Chưa kết nối được thiết bị Android qua ADB"
 - **Nguyên nhân:** Máy tính chưa nhận diện được thiết bị hoặc chưa cấp quyền gỡ lỗi USB.
