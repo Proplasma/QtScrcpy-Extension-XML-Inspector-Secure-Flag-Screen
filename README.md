@@ -16,9 +16,10 @@ Công cụ giải quyết triệt để hạn chế màn hình đen do cơ chế
 6. Hướng dẫn sử dụng
 7. Bảng phím tắt điều khiển
 8. Cơ chế trích xuất dữ liệu XML
-9. Cấu hình tham số dòng lệnh
-10. Xử lý sự cố thường gặp (Troubleshooting)
-11. Giấy phép sử dụng
+9. Cơ chế cô lập lệnh ADB (Target Device Isolation)
+10. Cấu hình tham số dòng lệnh
+11. Xử lý sự cố thường gặp (Troubleshooting)
+12. Giấy phép sử dụng
 
 ---
 
@@ -71,6 +72,16 @@ Hình 2: Công cụ kéo thả tạo bảng chia lưới bàn phím số 4x3 tr�
 - Tự động lưu kèm một bản sao có gắn dấu thời gian (timestamp) để phục vụ việc lưu trữ lịch sử kiểm thử.
 
 Hình 3: Giao diện thanh điều khiển đáy tích hợp nút trích xuất XML và các thao tác nhanh
+
+### Cửa sổ dòng lệnh ADB nhanh và cơ chế cô lập thiết bị (Target Device Isolation)
+- Nút bấm `[Lenh ADB]` màu xanh lá cây đặc trưng (cmd hacker font) được bố trí ngay sau nút `[Soi XML]`.
+- Mở cửa sổ dòng lệnh độc lập phong cách Matrix/Hacker Terminal với phông chữ Consolas xanh neon trên nền đen, có thể giữ mở song song với màn hình điện thoại mà không gây cản trở thao tác.
+- Cơ chế cô lập thiết bị đích (Device Isolation): Bất kể người dùng gõ lệnh chung (ví dụ: `shell input keyevent 3`, `shell getprop`), có tiền tố `adb`, hay vô tình gõ cờ `-s <serial khác>`, bộ lọc tự động chuẩn hóa và gán cứng tham số `-s <device_serial>` của chính cửa sổ đang soi.
+- Khắc phục triệt để lỗi xung đột đa thiết bị `error: more than one device/emulator` khi máy tính cắm đồng thời nhiều điện thoại qua cổng USB hoặc mạng không dây.
+- Tích hợp phím bấm tác vụ nhanh: Home (phím 3), Back (phím 4), Power (phím 26), Menu (phím 187), kích thước màn hình (wm size), địa chỉ IP Wi-Fi và xóa màn hình.
+- Hỗ trợ lưu trữ lịch sử dòng lệnh, duyệt lại các câu lệnh trước đó bằng phím Mũi tên Lên / Xuống như terminal chuyên nghiệp.
+
+Hình 4: Cửa sổ dòng lệnh ADB nhanh với giao diện Hacker Terminal và cơ chế cô lập thiết bị
 
 ---
 
@@ -185,7 +196,13 @@ Hình 4: Trạng thái hiển thị các khung giao diện sau khi phân tích c
    - Bấm nút **[Xuat XML]** hoặc ấn tổ hợp phím **Ctrl + S** (hoặc **F6**).
    - File cấu trúc giao diện sẽ lập tức được lưu vào máy tính.
 
-7. **Tắt chế độ soi:**
+7. **Thực thi lệnh ADB nhanh với thiết bị đích:**
+   - Bấm nút **[Lenh ADB]** màu xanh lá cây hoặc ấn phím **F7**.
+   - Cửa sổ ADB Terminal sẽ mở ra với dòng trạng thái xác nhận đã khóa cứng thiết bị đích (ví dụ: `Phone-R3CT104B80P`).
+   - Nhập lệnh cần chạy (hoặc bấm các nút tác vụ nhanh như Home, Back, Power, wm size, IP Wi-Fi) rồi nhấn **Enter**.
+   - Toàn bộ kết quả đầu ra và mã lỗi được hiển thị trực tiếp trong khung terminal mà không làm ảnh hưởng đến các thao tác trên màn hình điện thoại.
+
+8. **Tắt chế độ soi:**
    - Bấm nút **[Tat XML (ESC)]** hoặc ấn phím **ESC** để tắt lớp phủ khi không cần soi, trả lại khả năng tương tác trực tiếp cho cửa sổ QtScrcpy.
    - Bấm nút **[Thoat]** màu đỏ ở góc dưới để tắt hoàn toàn ứng dụng.
 
@@ -196,6 +213,7 @@ Hình 4: Trạng thái hiển thị các khung giao diện sau khi phân tích c
 | Phím tắt | Phạm vi hoạt động | Chức năng chi tiết |
 | :--- | :--- | :--- |
 | **F5** | Chế độ Soi XML | Quét và tải lại cây phân cấp giao diện mới nhất từ điện thoại |
+| **F7** | Mọi chế độ | Mở / kích hoạt cửa sổ dòng lệnh ADB nhanh (Hacker Terminal) |
 | **ESC** | Chế độ Soi XML | Thoát chế độ soi XML (chuyển sang chế độ click-through trong suốt) |
 | **Ctrl + S** | Mọi chế độ | Trích xuất file XML đầy đủ layout & text ra thư mục Downloads mặc định |
 | **F6** | Mọi chế độ | Phím tắt phụ tương đương với Ctrl + S để trích xuất XML |
@@ -203,6 +221,7 @@ Hình 4: Trạng thái hiển thị các khung giao diện sau khi phân tích c
 | **0 - 9 / Numpad** | Chế độ Soi XML | Bấm số tương ứng (ưu tiên lưới ảo 4x3 hoặc node số thực tế) |
 | **Backspace** | Chế độ Soi XML | Kích hoạt nút xóa ký tự trên bàn phím ảo hoặc nút xóa XML |
 | **Enter / Return** | Chế độ Soi XML | Kích hoạt nút xác nhận, đồng ý hoặc gửi dữ liệu |
+| **Mũi tên Lên / Xuống** | ADB Terminal | Duyệt lại lịch sử các câu lệnh ADB đã thực thi trước đó |
 
 ---
 
@@ -255,7 +274,51 @@ Tệp XML được trích xuất ở định dạng đầy đủ (không nén), 
 
 ---
 
-## 9. Cấu hình tham số dòng lệnh
+## 9. Cơ chế cô lập lệnh ADB (Target Device Isolation)
+
+Khi người dùng làm việc trong môi trường đa thiết bị (cắm nhiều điện thoại Android hoặc mở đồng thời nhiều giả lập), việc gửi lệnh ADB thông thường rất dễ gặp lỗi nghiêm trọng:
+```text
+adb: error: more than one device/emulator
+```
+Hoặc nghiêm trọng hơn là người dùng gửi nhầm lệnh can thiệp (ví dụ gỡ ứng dụng, reboot, nhập keyevent) sang thiết bị khác ngoài ý muốn.
+
+ScrcpySecureOverlay giải quyết triệt để vấn đề này thông qua cơ chế **Cô lập thiết bị đích (Target Device Isolation Engine)** hoạt động theo quy trình 3 bước:
+
+```text
+[Lệnh người dùng nhập] (VD: adb -s OTHER_PHONE shell getprop ro.product.model)
+                       |
+                       v
+[Bước 1: Bộ lọc Command Sanitizer]
+- Tách tham số dòng lệnh an toàn với shlex (bảo toàn nháy đơn, nháy kép)
+- Loại bỏ tiền tố 'adb', 'adb.exe' nếu người dùng gõ thừa
+- Lọc bỏ triệt để mọi cờ thiết bị: -s <id>, -s<id>, --serial <id>, --serial=<id>
+                       |
+                       v
+[Bước 2: Gán cứng định danh thiết bị đích]
+- Trích xuất serial độc quyền gắn với cửa sổ đang soi: self.device_serial
+- Tự động tái cấu trúc lệnh thực thi:
+  [adb_bin, "-s", "<device_serial>"] + <các tham số đã làm sạch>
+                       |
+                       v
+[Bước 3: Thực thi luồng ngầm (QThread Worker)]
+- Thực thi qua subprocess không mở cửa sổ cmd đen phụ
+- Bắt trọn stdout, stderr và mã trả về (exit code) với cơ chế timeout 25s
+- Xuất dữ liệu trực quan ra cửa sổ ADB Terminal phong cách hacker
+```
+
+### Các trường hợp xử lý mẫu của bộ lọc
+
+| Lệnh người dùng gõ vào ô nhập | Lệnh thực tế được hệ thống thực thi | Kết quả bảo đảm |
+| :--- | :--- | :--- |
+| `shell input keyevent 3` | `adb -s R3CT104B80P shell input keyevent 3` | Không bị lỗi thiếu thiết bị |
+| `adb shell wm size` | `adb -s R3CT104B80P shell wm size` | Tự động loại bỏ tiền tố adb |
+| `adb -s DEVICE_KHAC shell getprop` | `adb -s R3CT104B80P shell getprop` | Ghi đè bắt buộc sang máy đang soi |
+| `-s FAKE_SERIAL reboot` | `adb -s R3CT104B80P reboot` | Triệt tiêu cờ sai, chỉ tác động máy hiện tại |
+| `shell "input text 'Hello World'"` | `adb -s R3CT104B80P shell "input text 'Hello World'"` | Bảo toàn khoảng trắng và dấu ngoặc kép |
+
+---
+
+## 10. Cấu hình tham số dòng lệnh
 
 Ứng dụng hỗ trợ các tham số dòng lệnh phục vụ tự động hóa hoặc sử dụng trong môi trường đa thiết bị:
 
@@ -279,7 +342,7 @@ python qtscrcpy_overlay.py --demo
 
 ---
 
-## 10. Xử lý sự cố thường gặp (Troubleshooting)
+## 11. Xử lý sự cố thường gặp (Troubleshooting)
 
 ### Sự cố 1: Lớp phủ báo "Chưa kết nối được thiết bị Android qua ADB"
 - **Nguyên nhân:** Máy tính chưa nhận diện được thiết bị hoặc chưa cấp quyền gỡ lỗi USB.
@@ -302,6 +365,7 @@ python qtscrcpy_overlay.py --demo
 
 ---
 
-## 11. Giấy phép sử dụng
+## 12. Giấy phép sử dụng
 
 Dự án được phân phối dưới giấy phép mã nguồn mở **MIT License**. Bạn hoàn toàn có quyền sử dụng, sửa đổi, tích hợp vào các dự án tự động hóa cá nhân hoặc thương mại mà không có bất kỳ ràng buộc nào.
+
